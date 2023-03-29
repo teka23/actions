@@ -130,7 +130,6 @@ export declare class GoogleAdsActionFormBuilder {
     private maybeSetLoginCustomer;
     private maybeSetTargetCustomer;
     private getLoginCidOptions;
-    private getCustomer;
     private getTargetCidOptions;
     private selectOptionForCustomer;
     private sortCustomersCompareFn;

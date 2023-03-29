@@ -66,7 +66,7 @@ export class AirtableAction extends Hub.Action {
           })
         })
       }))
-    } catch (e: any) {
+    } catch (e) {
       response = { success: false, message: e.message }
     }
     return new Hub.ActionResponse(response)

@@ -1,4 +1,4 @@
-import {WebClient} from "@slack/web-api"
+import {WebClient} from "@slack/client"
 import {WebAPICallResult} from "@slack/web-api/dist/WebClient"
 import _ = require("lodash")
 import * as winston from "winston"
@@ -74,7 +74,7 @@ export class SlackAction extends Hub.DelegateOAuthAction {
           interactive: true,
           type: "select",
         })
-      } catch (e: any) {
+      } catch (e) {
         winston.error("Failed to fetch workspace: " + e.message)
       }
     }
@@ -88,7 +88,7 @@ export class SlackAction extends Hub.DelegateOAuthAction {
 
     try {
       form.fields = form.fields.concat(await getDisplayedFormFields(client, channelType))
-    } catch (e: any) {
+    } catch (e) {
       return this.loginForm(request, form)
     }
 
@@ -134,7 +134,7 @@ export class SlackAction extends Hub.DelegateOAuthAction {
           value: valFn(resp),
         })
       })
-    } catch (e: any) {
+    } catch (e) {
       form.error = displayError[e.message] || e
     }
     return form

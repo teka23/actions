@@ -1,4 +1,4 @@
-import { WebClient } from "@slack/web-api";
+import { WebClient } from "@slack/client";
 import * as Hub from "../../hub";
 export declare class SlackAction extends Hub.DelegateOAuthAction {
     name: string;

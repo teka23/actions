@@ -175,7 +175,7 @@ export class SageMakerInferAction extends Hub.Action {
       // return success response
       return new Hub.ActionResponse({ success: true })
 
-    } catch (err: any) {
+    } catch (err) {
       return new Hub.ActionResponse({ success: false, message: JSON.stringify(err) })
     }
   }

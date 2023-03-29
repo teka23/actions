@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { Credentials } from "google-auth-library";
 import * as Hub from "../../../../hub";
 import { Logger } from "../../common/logger";

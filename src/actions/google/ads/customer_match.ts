@@ -83,7 +83,7 @@ export class GoogleAdsCustomerMatch
       await adsRequest.execute()
       log("info", "Execution complete")
       return wrappedResp.returnSuccess(adsRequest.userState)
-    } catch (err: any) {
+    } catch (err) {
       sanitizeError(err)
       makeBetterErrorMessage(err, hubReq.webhookId)
       log("error", "Execution error toString:", err.toString())
@@ -103,7 +103,7 @@ export class GoogleAdsCustomerMatch
       // wrappedResp.form = await this.oauthHelper.makeLoginForm(hubReq)
       // wrappedResp.resetState()
       // return wrappedResp.returnSuccess()
-    } catch (err: any) {
+    } catch (err) {
       sanitizeError(err)
       const loginForm = await this.oauthHelper.makeLoginForm(hubReq)
       // Token errors that we can detect ahead of time

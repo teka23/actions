@@ -234,7 +234,7 @@ export default class FacebookCustomAudiencesExecutor {
             }, {})
             try {
               this.determineSchema(combinedFields)
-            } catch (err: any) {
+            } catch (err) {
               reject("CLEANFAIL " + err) // cleanly fail without crashing action hub
             }
           }

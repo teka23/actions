@@ -9,7 +9,7 @@ export interface DelegateOauthActionParameter extends ActionParameter {
 export abstract class DelegateOAuthAction extends Action {
   abstract params: DelegateOauthActionParameter[]
 
-  abstract oauthCheck(request: ActionRequest): Promise<ActionForm>
+  abstract async oauthCheck(request: ActionRequest): Promise<ActionForm>
 
   asJson(router: RouteBuilder, request: ActionRequest): any {
     const json = super.asJson(router, request)

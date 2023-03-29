@@ -62,7 +62,7 @@ export class FacebookCustomAudiencesAction extends Hub.OAuthAction {
         const actionForm = await formBuilder.generateActionForm(hubRequest, facebookApi)
         return actionForm
       }
-    } catch (err: any) {
+    } catch (err) {
       sanitizeError(err)
       winston.error(err)
     }
@@ -90,7 +90,7 @@ export class FacebookCustomAudiencesAction extends Hub.OAuthAction {
     try {
       const actionCrypto = new Hub.ActionCrypto()
       plaintext = await actionCrypto.decrypt(urlParams.state)
-    } catch (err: any) {
+    } catch (err) {
       winston.error("Encryption not correctly configured: " + err.toString())
       throw err
     }
@@ -114,7 +114,7 @@ export class FacebookCustomAudiencesAction extends Hub.OAuthAction {
         url: payload.stateUrl,
         data: userState,
       })
-    } catch (err: any) {
+    } catch (err) {
       sanitizeError(err)
       // We have seen weird behavior where Looker correctly updates the state, but returns a nonsense status code
       if (err instanceof gaxios.GaxiosError && err.response !== undefined && err.response.status < 100) {
@@ -154,7 +154,7 @@ export class FacebookCustomAudiencesAction extends Hub.OAuthAction {
         return false
       }
       return true
-    } catch (err: any) {
+    } catch (err) {
       sanitizeError(err)
       winston.debug("Failed oauthCheck because access token was expired or due to an error: " + err)
       return false
@@ -165,7 +165,7 @@ export class FacebookCustomAudiencesAction extends Hub.OAuthAction {
     try {
       const params: any = request.params
       return JSON.parse(params.state_json).tokens.longLivedToken
-    } catch (e: any) {
+    } catch (err) {
       winston.error("Failed to parse state for access token.")
       return null
     }

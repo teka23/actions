@@ -1,4 +1,4 @@
-import {WebClient} from "@slack/web-api"
+import {WebClient} from "@slack/client"
 import * as semver from "semver"
 import * as winston from "winston"
 import * as Hub from "../../hub"
@@ -33,7 +33,7 @@ export class SlackClientManager {
             if (supportMultiWs) {
                 try {
                     json = JSON.parse(stateJson)
-                } catch (e: any) {
+                } catch (e) {
                     winston.warn("Received malform JSON for supported multi tenant version. Proceeding as str.")
                 }
             }

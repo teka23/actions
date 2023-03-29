@@ -1,5 +1,5 @@
 import * as Hub from "../../../hub";
-type HubTypes = Hub.ActionResponse | Hub.ActionForm;
+declare type HubTypes = Hub.ActionResponse | Hub.ActionForm;
 export declare class WrappedResponse<T extends HubTypes> {
     errorPrefix: string;
     private _hubResp;

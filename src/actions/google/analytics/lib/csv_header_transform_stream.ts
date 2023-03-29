@@ -45,7 +45,7 @@ export class CsvHeaderTransformStream extends Transform {
             const lines = chunk.toString("utf8").split("\n")
             lines[0] = this.csvHeader
             chunk = Buffer.from(lines.join("\n"))
-        } catch (e: any) {
+        } catch (e) {
             err = e
         } finally {
             this.firstChunkDone = true

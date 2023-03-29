@@ -238,9 +238,7 @@ export class ActionRequest {
       } else {
         if (this.attachment && this.attachment.dataBuffer) {
           winston.info(`Using "fake" streaming because request contained attachment data.`, this.logInfo)
-          winston.info(`DataBuffer: ${this.attachment.dataBuffer.length}`)
-          stream.write(this.attachment.dataBuffer)
-          stream.end()
+          stream.end(this.attachment.dataBuffer)
           resolve()
         } else {
           stream.end()
@@ -433,7 +431,7 @@ export class ActionRequest {
       try {
         callback(node)
         return oboe.drop
-      } catch (e: any) {
+      } catch (e) {
         winston.info(`safeOboe callback produced an error, aborting stream`, logInfo)
         this.abort()
         stream.destroy()
